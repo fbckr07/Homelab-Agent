@@ -13,6 +13,13 @@ public static class ConfigManager
         await CheckConfigFiles();
     }
 
+    public static IServiceCollection AddConfigs(this IServiceCollection services)
+    {
+        Initialize().Wait();
+    
+        return services;
+    }
+
     public static async Task CheckConfigFiles()
     {
         CheckConfigDirectory();
@@ -37,6 +44,7 @@ public static class ConfigManager
                 await File.WriteAllTextAsync(
                     Path.Combine(ConfigDirectory, file),
                     FileContents.ConfigFileContents[file]);   
+                SimpleLogger.LogInformation($"Created config file {file}.");
             }
             catch (Exception e)
             {
