@@ -11,8 +11,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Config\" />
       <Folder Include="Controllers\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HomelabAgent.Logging\HomelabAgent.Logging.csproj" />
     </ItemGroup>
 
 </Project>
