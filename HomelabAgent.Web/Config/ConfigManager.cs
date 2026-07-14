@@ -1,13 +1,11 @@
 using HomelabAgent.Logging.SimpleLogger;
+using Microsoft.OpenApi;
 
 namespace HomelabAgent.Web.Config;
 
 public static class ConfigManager
 {
-    private const string ConfigDirectory = "./config/";
-    private static readonly List<string> ConfigFiles = new() { "host.ini", "agent.ini" };
-    private static List<string> MissingConfigFiles = new();
-    
+    private static readonly string ConfigDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config");
     
     public static async Task Initialize()
     {
@@ -18,7 +16,12 @@ public static class ConfigManager
     public static async Task CheckConfigFiles()
     {
         CheckConfigDirectory();
-        foreach (var file in ConfigFiles)
+        
+        List<string> MissingConfigFiles = new();
+
+        var expectedFiles = FileContents.ConfigFileContents.Keys;
+        
+        foreach (var file in expectedFiles)
         {
             if (!File.Exists(Path.Combine(ConfigDirectory, file)))
             {
