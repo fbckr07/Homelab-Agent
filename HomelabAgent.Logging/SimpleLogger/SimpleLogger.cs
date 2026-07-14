@@ -18,12 +18,15 @@ public static class SimpleLogger
         Console.ResetColor();
     }
 
-    public static void LogError(string message)
+    public static void LogError(string message, bool ExitApplication = false)
     {
         string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"[ERROR] [{timestamp}]  {message}");
         Console.ResetColor();
+        
+        if (ExitApplication)
+            Environment.Exit(1);
     }
     
     public static void LogException(Exception exception, bool ExitApplication = false)
