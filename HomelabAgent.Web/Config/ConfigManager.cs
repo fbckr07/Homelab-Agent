@@ -1,5 +1,6 @@
 using HomelabAgent.Logging.SimpleLogger;
 using Microsoft.OpenApi;
+using Shared.Models.Config;
 
 namespace HomelabAgent.Web.Config;
 
@@ -18,6 +19,16 @@ public static class ConfigManager
         Initialize().Wait();
     
         return services;
+    }
+
+    public static WebApplicationBuilder AddConfigs(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddConfigs();
+        
+        builder.Configuration.AddIniFile(Path.Combine(ConfigDirectory, "host.ini"), optional: false, reloadOnChange: true);
+        builder.Services.Configure<HostConfig>(builder.Configuration.GetSection("HostConfig"));
+
+        return builder;
     }
 
     public static async Task CheckConfigFiles()
