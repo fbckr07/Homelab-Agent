@@ -1,1 +1,3 @@
-<Solution />
+<Solution>
+  <Project Path="HomelabAgent.Web/HomelabAgent.Web.csproj" />
+</Solution>
