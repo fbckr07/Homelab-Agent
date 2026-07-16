@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="HomelabAgent.Logging/HomelabAgent.Logging.csproj" />
+  <Project Path="HomelabAgent.Net/HomelabAgent.Net.csproj" />
   <Project Path="HomelabAgent.Web/HomelabAgent.Web.csproj" />
   <Project Path="Shared/Shared.csproj" />
 </Solution>
