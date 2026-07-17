@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HomelabAgent.Logging\HomelabAgent.Logging.csproj" />
+      <ProjectReference Include="..\HomelabAgent.Net\HomelabAgent.Net.csproj" />
       <ProjectReference Include="..\Shared\Shared.csproj" />
     </ItemGroup>
 

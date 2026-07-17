@@ -1,8 +1,10 @@
 using HomelabAgent.Web.Config;
+using HomelabAgent.Web.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddUdpDiscovery();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
